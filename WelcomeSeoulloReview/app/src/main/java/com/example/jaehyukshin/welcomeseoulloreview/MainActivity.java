@@ -5,16 +5,24 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
     BottomNavigationView bottomNavigationView;
+    Button mainButton;
+    static TextView mainTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        mainButton = (Button) findViewById(R.id.mainButton);
+        mainTextView = (TextView) findViewById(R.id.mainTextView);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
@@ -35,6 +43,13 @@ public class MainActivity extends Activity {
                         break;
                 }
                 return true;
+            }
+        });
+
+        mainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ManagePublicData.getInstance().parsePublicToilet.execute();
             }
         });
     }
