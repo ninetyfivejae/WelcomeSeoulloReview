@@ -161,10 +161,6 @@ public class ManagePublicData {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            for (int i = 0; i < managePublicData.getPublicToiletVOArrayList().size(); i++) {
-                MainActivity.mainTextView.append("\n");
-                MainActivity.mainTextView.append(getPublicToiletVOArrayList().get(i).getToiletName() + " ");
-            }
         }
     }
 
