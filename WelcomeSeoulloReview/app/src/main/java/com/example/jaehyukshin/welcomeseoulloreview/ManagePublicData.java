@@ -40,8 +40,19 @@ public class ManagePublicData {
 
     private ManagePublicData() {
         publicToiletVO = new PublicToiletVO();
-        publicToiletVOArrayList = new ArrayList<PublicToiletVO>(120);
+        publicParkingLotVO = new PublicParkingLotVO();
+        publicParkVO = new PublicParkVO();
+        traditionalMarketVO = new TraditionalMarketVO();
+
+        publicToiletVOArrayList = new ArrayList<PublicToiletVO>();
+        publicParkingLotVOArrayList = new ArrayList<PublicParkingLotVO>();
+        publicParkVOArrayList = new ArrayList<PublicParkVO>();
+        traditionalMarketVOArrayList = new ArrayList<TraditionalMarketVO>();
+
         parsePublicToilet = new ParsePublicToilet();
+        parsePublicParkingLot = new ParsePublicParkingLot();
+        parsePublicPark = new ParsePublicPark();
+        parseTraditionalMarket = new ParseTraditionalMarket();
     }
 
     public ArrayList<PublicToiletVO> getPublicToiletVOArrayList() {
@@ -136,12 +147,12 @@ public class ManagePublicData {
                                         break;
                                     case "Y_WGS84":
                                         publicToiletVO.setToiletLatitude(data);
-//                                        if (calculatePublicToiletCoordinates(publicToiletVO.getToiletLatitude(), publicToiletVO.getToiletLongitude())) {
-//                                            publicToiletVOArrayList.add(new PublicToiletVO(publicToiletVO.getToiletName(), publicToiletVO.getToiletCategory(), publicToiletVO.getToiletLatitude(), publicToiletVO.getToiletLongitude()));
-//                                            Log.v("test", "화장실 : " + publicToiletVOArrayList.get(publicToiletVOArrayList.size() - 1).getToiletName());
-//                                        }
-                                        publicToiletVOArrayList.add(new PublicToiletVO(publicToiletVO.getToiletName(), publicToiletVO.getToiletCategory(), publicToiletVO.getToiletLatitude(), publicToiletVO.getToiletLongitude()));
-                                        Log.v("test", "화장실 : " + publicToiletVOArrayList.get(publicToiletVOArrayList.size() - 1).getToiletName());
+                                        if (calculateCoordinates(publicToiletVO.getToiletLatitude(), publicToiletVO.getToiletLongitude())) {
+                                            publicToiletVOArrayList.add(new PublicToiletVO(publicToiletVO.getToiletName(), publicToiletVO.getToiletCategory(), publicToiletVO.getToiletLatitude(), publicToiletVO.getToiletLongitude()));
+                                            Log.v("test", "화장실 : " + publicToiletVOArrayList.get(publicToiletVOArrayList.size() - 1).getToiletName());
+                                        }
+//                                        publicToiletVOArrayList.add(new PublicToiletVO(publicToiletVO.getToiletName(), publicToiletVO.getToiletCategory(), publicToiletVO.getToiletLatitude(), publicToiletVO.getToiletLongitude()));
+//                                        Log.v("test", "화장실 : " + publicToiletVOArrayList.get(publicToiletVOArrayList.size() - 1).getToiletName());
                                         break;
                                 }
                                 bSet = false;
@@ -205,7 +216,7 @@ public class ManagePublicData {
                                         if(calculateCoordinates(publicParkingLotVO.getParkingLotLatitude(), publicParkingLotVO.getParkingLotLongitude())
                                                 && checkDuplication(publicParkingLotVO.getParkingLotName())){
                                             publicParkingLotVOArrayList.add(new PublicParkingLotVO(publicParkingLotVO.getParkingLotName(), publicParkingLotVO.getParkingLotType(), publicParkingLotVO.getParkingLotLatitude(), publicParkingLotVO.getParkingLotLongitude()));
-                                            Log.v("test", publicParkingLotVOArrayList.get(publicParkingLotVOArrayList.size() - 1).getParkingLotName());
+                                            Log.v("test", "주차장 : " + publicParkingLotVOArrayList.get(publicParkingLotVOArrayList.size() - 1).getParkingLotName());
                                         }
                                         break;
                                 }
@@ -266,6 +277,7 @@ public class ManagePublicData {
                                     publicParkVO.setParkLatitude(data);
                                     if(calculateCoordinates(publicParkVO.getParkLatitude(), publicParkVO.getParkLongitude())){
                                         publicParkVOArrayList.add(new PublicParkVO(publicParkVO.getParkName(), publicParkVO.getParkLongitude(), publicParkVO.getParkLatitude()));
+                                        Log.v("test", "공원 : " + publicParkVOArrayList.get(publicParkVOArrayList.size() - 1).getParkName());
                                     }
                                     break;
                             }
@@ -324,6 +336,7 @@ public class ManagePublicData {
                                     traditionalMarketVO.setMarketLongitude(data);
                                     if (calculateCoordinates(traditionalMarketVO.getMarketLatitude(), traditionalMarketVO.getMarketLongitude())) {
                                         traditionalMarketVOArrayList.add(new TraditionalMarketVO(traditionalMarketVO.getMarketName(), traditionalMarketVO.getMarketLatitude(), traditionalMarketVO.getMarketLongitude()));
+                                        Log.v("test", "시장 : " + traditionalMarketVOArrayList.get(traditionalMarketVOArrayList.size() - 1).getMarketName());
                                     }
                                     break;
                             }
