@@ -1,4 +1,4 @@
-package com.example.jaehyukshin.welcomeseoulloreview;
+package com.example.jaehyukshin.welcomeseoulloreview.PublicData;
 
 public class PublicToiletVO {
 

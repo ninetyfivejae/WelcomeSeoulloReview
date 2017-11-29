@@ -1,4 +1,4 @@
-package com.example.jaehyukshin.welcomeseoulloreview;
+package com.example.jaehyukshin.welcomeseoulloreview.PublicData;
 
 import android.os.AsyncTask;
 import android.util.Log;

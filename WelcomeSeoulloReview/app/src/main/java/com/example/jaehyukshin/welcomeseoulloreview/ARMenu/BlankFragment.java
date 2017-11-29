@@ -1,10 +1,12 @@
-package com.example.jaehyukshin.welcomeseoulloreview;
+package com.example.jaehyukshin.welcomeseoulloreview.ARMenu;
 
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.jaehyukshin.welcomeseoulloreview.R;
 
 public class BlankFragment extends Fragment {
 
