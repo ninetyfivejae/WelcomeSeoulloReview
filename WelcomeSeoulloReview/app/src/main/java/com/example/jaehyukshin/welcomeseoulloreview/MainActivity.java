@@ -1,11 +1,17 @@
 package com.example.jaehyukshin.welcomeseoulloreview;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.example.jaehyukshin.welcomeseoulloreview.ARMenu.BlankFragment;
 import com.example.jaehyukshin.welcomeseoulloreview.FacilityMenu.GuideInfoFragment;
@@ -14,6 +20,9 @@ import com.example.jaehyukshin.welcomeseoulloreview.NavigationMenu.PathInfoFragm
 import com.example.jaehyukshin.welcomeseoulloreview.SettingsMenu.SettingsFragment;
 
 public class MainActivity extends Activity {
+
+    private final long FINISH_INTERVAL_TIME = 2000;
+    private long backPressedTime = 0;
 
     BottomNavigationView bottomNavigationView;
 
@@ -34,6 +43,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        changeStatusBarColor();
 
         mainViewPager = (ViewPager) findViewById(R.id.mainViewPager);
         mainViewPager.setOffscreenPageLimit(5);
@@ -108,5 +119,37 @@ public class MainActivity extends Activity {
         adapter.addFragment(settingsFragment);
 
         viewPager.setAdapter(adapter);
+    }
+
+    private void changeStatusBarColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        long tempTime = System.currentTimeMillis();
+        long intervalTime = tempTime - backPressedTime;
+
+        if(currentMenu == R.id.action_home && isHomeFragmentVisible){
+            if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
+                super.onBackPressed();
+                MainActivity.this.finish();
+                System.exit(0);
+            }
+            else {
+                backPressedTime = tempTime;
+                Toast.makeText(getApplicationContext(), "'뒤로' 버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else{
+            bottomNavigationView.setSelectedItemId(R.id.action_home);
+            isHomeFragmentVisible = true;
+        }
     }
 }

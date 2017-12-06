@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     defaultConfig {
         applicationId "com.example.jaehyukshin.welcomeseoulloreview"
-        minSdkVersion 15
+        minSdkVersion 17
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -31,5 +31,5 @@ dependencies {
 
     compile 'com.android.support:design:25.0.0'
 
-    compile 'com.android.support:support-v13:25.3.1'
+    compile 'com.android.support:support-v13:25.0.0'
 }
