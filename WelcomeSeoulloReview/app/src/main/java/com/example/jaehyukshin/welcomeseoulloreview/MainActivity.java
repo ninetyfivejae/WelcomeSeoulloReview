@@ -136,7 +136,7 @@ public class MainActivity extends Activity {
         long tempTime = System.currentTimeMillis();
         long intervalTime = tempTime - backPressedTime;
 
-        if(currentMenu == R.id.action_home && isHomeFragmentVisible){
+        if(currentMenu == R.id.action_home){
             if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
                 super.onBackPressed();
                 MainActivity.this.finish();
@@ -148,8 +148,8 @@ public class MainActivity extends Activity {
             }
         }
         else{
+            //From API 25.3.0 it was introduced the method setSelectedItemId(int id)
             bottomNavigationView.setSelectedItemId(R.id.action_home);
-            isHomeFragmentVisible = true;
         }
     }
 }
