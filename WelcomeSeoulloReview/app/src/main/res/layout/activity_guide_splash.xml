@@ -10,6 +10,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
+        <com.example.jaehyukshin.welcomeseoulloreview.MyVideoView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/bgVideoView" />
+
         <android.support.v4.view.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"

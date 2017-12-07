@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -50,6 +52,18 @@ public class GuideSplashActivity extends Activity {
         changeStatusBarColor();
 
         setContentView(R.layout.activity_guide_splash);
+
+        //비디오 배경 설정
+        MyVideoView mVideoView = (MyVideoView) findViewById(R.id.bgVideoView);
+        Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.splash_video);
+        mVideoView.setVideoURI(uri);
+        mVideoView.start();
+        mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setLooping(true);
+            }
+        });
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
