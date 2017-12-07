@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView2" />
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="400dp"
+        android:background="@drawable/splash_text2"
+        android:layout_gravity="center_horizontal|bottom"
+        android:gravity="center"
+        android:text="증강현실로 공유하는 서울로7017의 추억"
+        android:textColor="@color/white"
+        android:textSize="20dp"/>
+</LinearLayout>
