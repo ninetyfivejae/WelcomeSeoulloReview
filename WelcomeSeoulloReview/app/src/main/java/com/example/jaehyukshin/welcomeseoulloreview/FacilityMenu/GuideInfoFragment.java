@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.example.jaehyukshin.welcomeseoulloreview.R;
 import com.skp.Tmap.TMapView;
@@ -15,7 +16,7 @@ public class GuideInfoFragment extends Fragment {
 
     RelativeLayout mapView;
     TMapView tMapView;
-    String apiKey = "1477f615-49bc-39c4-b995-817cd9d4e311";
+    String apiKey = "a9c59e41-307a-3911-8084-018da05c833e";
 
     public GuideInfoFragment(){
 
@@ -30,16 +31,17 @@ public class GuideInfoFragment extends Fragment {
         tMapView = new TMapView(getActivity());
 
         //세팅
-        tMapView.setSKPMapApiKey(apiKey); //발급받은 api 키
-        tMapView.setCompassMode(true);
+        tMapView.setSKPMapApiKey("500adabd-fcb2-34fd-af42-022c6611b9a7");
+        tMapView.setLocationPoint(126.970325,37.556152);
+        tMapView.setCenterPoint(126.970325,37.556152);
+        tMapView.setCompassMode(false);
         tMapView.setIconVisibility(true);
         tMapView.setZoomLevel(15);
-        tMapView.setMapType(TMapView.MAPTYPE_STANDARD);
+        tMapView.setMapType(TMapView.MAPTYPE_STANDARD);  //일반지도
         tMapView.setLanguage(TMapView.LANGUAGE_KOREAN);
-        tMapView.setTrackingMode(true);
-        tMapView.setSightVisible(true);
+        tMapView.setTrackingMode(false);
+        tMapView.setSightVisible(false);
         mapView.addView(tMapView);
-        setContentView(mapView);
 
         return view;
     }
